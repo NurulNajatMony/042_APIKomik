@@ -67,3 +67,25 @@ async function updateGenre(req, res) {
     }
 }
 
+async function deleteGenre(req, res) {
+    try {
+        const genre = await db.Genre.findByPk(req.params.id);
+
+        if (!genre) {
+            return res.status(404).json({
+                message: 'Genre tidak ditemukan'
+            });
+        }
+
+        await genre.destroy();
+
+        res.status(200).json({
+            message: 'Genre berhasil dihapus'
+        });
+    } catch (err) {
+        res.status(500).json({
+            error: err.message
+        });
+    }
+}
+
