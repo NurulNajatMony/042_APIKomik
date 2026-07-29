@@ -29,3 +29,19 @@ async function getGenreById(req, res) {
     }
 }
 
+async function createGenre(req, res) {
+    try {
+        const { nama } = req.body;
+
+        const genre = await db.Genre.create({
+            nama
+        });
+
+        res.status(201).json(genre);
+    } catch (err) {
+        res.status(500).json({
+            error: err.message
+        });
+    }
+}
+
