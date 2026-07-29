@@ -89,3 +89,10 @@ async function deleteGenre(req, res) {
     }
 }
 
+module.exports = {
+    getAllGenre,
+    getGenreById,
+    createGenre,
+    updateGenre,
+    deleteGenre
+};
